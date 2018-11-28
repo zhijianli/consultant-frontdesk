@@ -1,0 +1,27 @@
+.consultant-introduce{
+  background: darkred;
+  height: 50rem;
+}
+
+.consultant-experience{
+  background: aquamarine;
+  height: 10rem;
+}
+
+.consultant-field{
+  background: blueviolet;
+  height: 10rem;
+
+}
+
+.consultant-price{
+  background: chartreuse;
+  height: 10rem;
+
+}
+
+.consultant-contact-information{
+  background: burlywood;
+  height: 10rem;
+
+}

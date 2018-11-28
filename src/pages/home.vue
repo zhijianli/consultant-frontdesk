@@ -1,6 +1,8 @@
+<style src="../assets/css/home.css"></style>
+
 <template>
   <div class="home-box">
-    <div class="home-bg"  :style="homeDesc.bgImg"  @click="toDetail(homeDesc.id)">
+    <!-- <div class="home-bg"  :style="homeDesc.bgImg"  @click="toDetail(homeDesc.id)">
       <div class="home-bgcolor">
         <div class="home-desc">
           <h4 class="home-day">{{homeDesc.day}}</h4>
@@ -10,11 +12,55 @@
         “藏龙”项目从这里开始
       </div>
       <one-load v-show="showLoading"></one-load>
+    </div> -->
+    <!--首页banner -->
+    <div>
+      <router-link tag='a' :to="'./consultantDetail'" >
+      <img src="../assets/images/banner.jpg" style="width:100%;height:160px;">
+      </router-link>
     </div>
-    <!--首屏文字和图片完-->
-    <!--其他代码
-         .....
-     -->
+
+    <!--筛选条件 -->
+    <div class="screening-conditions">
+
+
+
+    </div>
+
+    <!--咨询师List -->
+    <div class="consultant-list">
+
+      <!--咨询师信息 -->
+      <div class="consultant">
+        <!--咨询师头像 -->
+        <div class="head-portrait"></div>
+
+        <!--咨询师介绍 -->
+        <div class="introduce">
+          <div class="consultant-name"></div>
+          <div class="consultant-describe"></div>
+          <div class="consultant-price"></div>
+        </div>
+
+      </div>
+
+
+      <!--咨询师信息 -->
+      <div class="consultant">
+        <!--咨询师头像 -->
+        <div class="head-portrait"></div>
+
+        <!--咨询师介绍 -->
+        <div class="introduce">
+          <div class="consultant-name"></div>
+          <div class="consultant-describe"></div>
+          <div class="consultant-price"></div>
+        </div>
+
+      </div>
+
+    </div>
+
   </div>
 </template>
 

@@ -1,0 +1,40 @@
+
+.screening-conditions{
+  background: aqua;
+  height: 5rem;
+}
+.consultant-list{
+  background: darkred;
+  height: 100rem;
+}
+.consultant{
+  display: flex;
+
+}
+
+.head-portrait{
+  flex: 1;
+  background: aquamarine;
+  height: 10rem;
+}
+
+.introduce{
+  flex: 2;
+  background: blueviolet;
+  height: 10rem;
+}
+.consultant-name{
+  background: chartreuse;
+  height: 3rem;
+}
+.consultant-describe{
+  background: burlywood;
+  height: 4rem;
+}
+.consultant-price{
+  background: darkolivegreen;
+  height: 3rem;
+
+}
+
+
