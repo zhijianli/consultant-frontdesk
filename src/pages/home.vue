@@ -16,14 +16,24 @@
     <!--首页banner -->
     <div>
       <router-link tag='a' :to="'./consultantDetail'" >
-      <img src="../assets/images/banner.jpg" style="width:100%;height:160px;">
+      <img src="../assets/images/banner.jpg" style="width:100%;height:150px;">
       </router-link>
     </div>
 
     <!--筛选条件 -->
     <div class="screening-conditions">
-
-
+      <div class="screening-conditions-region screening-conditions-font">地区
+        <img src="../assets/images/triangle.png" class="triangle" >
+      </div>
+      <div class="screening-conditions-price screening-conditions-font">价格
+        <img src="../assets/images/triangle.png" class="triangle" >
+      </div>
+      <div class="screening-conditions-mode screening-conditions-font">咨询方式
+        <img src="../assets/images/triangle.png" class="triangle" >
+      </div>
+      <div class="screening-conditions-field screening-conditions-font">领域
+        <img src="../assets/images/triangle.png" class="triangle" >
+      </div>
 
     </div>
 
@@ -33,31 +43,79 @@
       <!--咨询师信息 -->
       <div class="consultant">
         <!--咨询师头像 -->
-        <div class="head-portrait"></div>
+        <div class="head-portrait">
+          <img src="../assets/images/headPortrait.png" class="head-portrait-img" >
+        </div>
 
         <!--咨询师介绍 -->
         <div class="introduce">
-          <div class="consultant-name"></div>
-          <div class="consultant-describe"></div>
-          <div class="consultant-price"></div>
+          <div class="consultant-name">
+             李志坚
+          </div>
+          <div class="consultant-describe">
+            一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。
+            一个牛逼的心理咨询师。
+          </div>
+          <div class="consultant-price">
+
+             300元/次
+          </div>
         </div>
 
-      </div>
 
+      </div>
+      <div class="line"></div>
 
       <!--咨询师信息 -->
       <div class="consultant">
         <!--咨询师头像 -->
-        <div class="head-portrait"></div>
+        <div class="head-portrait">
+          <img src="../assets/images/headPortrait.png" class="head-portrait-img" >
+        </div>
 
         <!--咨询师介绍 -->
         <div class="introduce">
-          <div class="consultant-name"></div>
-          <div class="consultant-describe"></div>
-          <div class="consultant-price"></div>
+          <div class="consultant-name">
+            李志坚
+          </div>
+          <div class="consultant-describe">
+            一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。
+            一个牛逼的心理咨询师。
+          </div>
+          <div class="consultant-price">
+
+            300元/次
+          </div>
         </div>
 
       </div>
+      <p class="line"></p>
+
+      <!--咨询师信息 -->
+      <div class="consultant">
+        <!--咨询师头像 -->
+        <div class="head-portrait">
+          <img src="../assets/images/headPortrait.png" class="head-portrait-img" >
+        </div>
+
+        <!--咨询师介绍 -->
+        <div class="introduce">
+          <div class="consultant-name">
+            李志坚
+          </div>
+          <div class="consultant-describe">
+            一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。
+            一个牛逼的心理咨询师。
+          </div>
+          <div class="consultant-price">
+
+            300元/次
+          </div>
+        </div>
+
+
+      </div>
+      <p class="line"></p>
 
     </div>
 

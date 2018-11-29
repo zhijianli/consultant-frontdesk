@@ -1,39 +1,85 @@
 
 .screening-conditions{
-  background: aqua;
-  height: 5rem;
+  display: flex;
+  background: #FFFFFF;
+  height: 3rem;
+  line-height: 3rem;
+  border-bottom: 1px solid #D7D7D7;
+}
+.triangle{
+  width:0.9rem;
+}
+
+.screening-conditions-font{
+  color: #8A8A8A ;
+  font-size: 0.9rem;
+}
+.screening-conditions-region{
+  flex: 1;
+}
+
+.screening-conditions-price{
+  flex: 1;
+}
+.screening-conditions-mode{
+  flex: 1.6;
+}
+.screening-conditions-field{
+  flex: 1;
 }
 .consultant-list{
-  background: darkred;
-  height: 100rem;
+
 }
 .consultant{
   display: flex;
+  height: 10rem;
+}
+.line{
+  margin-left: 5%;
+  width: 90%;
+  border-bottom: 1px solid #D7D7D7;
+  opacity:0.5;
 
 }
-
 .head-portrait{
   flex: 1;
-  background: aquamarine;
+  background: #FFFFFF;
   height: 10rem;
+  line-height: 10rem;
+
+}
+.head-portrait-img{
+  width:4rem;
+  border-radius: 2rem;
 }
 
 .introduce{
-  flex: 2;
-  background: blueviolet;
+  flex: 3.7;
+  background: #FFFFFF;
   height: 10rem;
 }
 .consultant-name{
-  background: chartreuse;
+  font-size: 1.05rem;
+  color: #4A4A4A;
+  background: #FFFFFF;
   height: 3rem;
+  line-height: 3rem;
+  text-align : left
 }
 .consultant-describe{
-  background: burlywood;
+  font-size: 0.77rem;
+  color: #6E6E6E;
+  background: #FFFFFF;
   height: 4rem;
+  text-align : left;
+  margin-right: 1rem;
 }
 .consultant-price{
-  background: darkolivegreen;
+  font-size: 1.05rem;
+  color: #4A4A4A;
+  background: #FFFFFF;
   height: 3rem;
+  text-align : left
 
 }
 
