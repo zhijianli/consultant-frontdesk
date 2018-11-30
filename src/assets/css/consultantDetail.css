@@ -1,27 +1,68 @@
+.banner{
+  width:100%;
+  height:11.9rem;
+  overflow: hidden;
+}
+.banner-img{
+  filter: blur(2px);
+  /*overflow: hidden;*/
+  width:100%;
+  height:11.9rem;
+
+}
+.head{
+  position:absolute;
+  top: 1rem;
+  left: 7.6rem;
+}
+.head-img{
+  width:5rem;
+  border-radius: 6rem;
+}
+.con-name{
+  margin-top: 0.7rem;
+  color: #FFFFFF;
+  font-size: 1.2rem;
+  font-weight:bold;
+}
+.con-level{
+  margin-top: 1rem;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  font-weight:bold;
+}
+
 .consultant-introduce{
-  background: darkred;
+  margin-top: 0.7rem;
+  background: #FFFFFF;
   height: 50rem;
 }
 
-.consultant-experience{
-  background: aquamarine;
-  height: 10rem;
+.consultant-introduce-detail{
+  background: #FFFFFF;
+  height: 7rem;
+  padding-top: 0.7rem;
 }
 
-.consultant-field{
-  background: blueviolet;
-  height: 10rem;
+.line{
+  border-left: 2px solid #451C81;
+  margin-left: 1rem;
+  padding-left: 0.7rem;
+}
+.title{
+  color: #4A4A4A;
+  font-size: 1rem;
+  font-weight:bold;
+  text-align : left;
+  /*margin-left: 1rem;*/
+
 
 }
-
-.consultant-price{
-  background: chartreuse;
-  height: 10rem;
-
-}
-
-.consultant-contact-information{
-  background: burlywood;
-  height: 10rem;
-
+.content{
+  color: #828282;
+  font-size: 0.6875rem;
+  text-align : left;
+  margin-left: 2rem;
+  margin-right: 2rem;
+  margin-top: 1rem;
 }

@@ -4,18 +4,67 @@
   <div class="home-box">
 
     <!--咨询师banner -->
-    <div>
+    <div class="banner">
       <router-link tag='a' :to="'./consultantDetail'" >
-        <img src="../assets/images/banner.jpg" style="width:100%;height:160px;">
+        <img src="../assets/images/consultantDetail.png" class="banner-img" >
       </router-link>
+    </div>
+    <div class="head">
+      <img src="../assets/images/headPortrait.png" class="head-img" >
+      <div class="con-name">李志坚</div>
+      <div class="con-level">国家三级心理咨询师</div>
     </div>
 
     <!--咨询师介绍 -->
     <div class="consultant-introduce">
-      <div class="consultant-experience"></div>
-      <div class="consultant-field"></div>
-      <div class="consultant-price"></div>
-      <div class="consultant-contact-information"></div>
+      <!--受训经历 -->
+      <div class="consultant-introduce-detail">
+        <div class="line">
+        <div class="title">受训经历</div>
+        </div>
+        <div class="content">
+             非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+             非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+             非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+
+        </div>
+      </div>
+
+      <!--擅长领域和方向 -->
+      <div class="consultant-introduce-detail">
+        <div class="line">
+          <div class="title">擅长领域和方向</div>
+        </div>
+        <div class="content">
+          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+        </div>
+      </div>
+
+      <!--咨询价格 -->
+      <div class="consultant-introduce-detail">
+        <div class="line">
+          <div class="title">咨询价格</div>
+        </div>
+        <div class="content">
+          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+        </div>
+      </div>
+
+      <!--联系方式 -->
+      <div class="consultant-introduce-detail">
+        <div class="line">
+          <div class="title">联系方式</div>
+        </div>
+        <div class="content">
+          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+        </div>
+      </div>
 
 
     </div>
