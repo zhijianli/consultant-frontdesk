@@ -1,0 +1,56 @@
+.consultant-mode-component{
+  height: 13rem;
+}
+.consultant-mode-title{
+  color: #4A4A4A;
+  font-size: 1rem;
+  text-align : left;
+  margin-left: 1rem;
+  margin-top: 0.7rem;
+}
+.consultant-mode-content{
+  display: flex;
+  flex-direction: column;
+  margin-top: 0.7rem;
+  margin-bottom: 4.3rem;
+}
+.consultant-mode-content-line{
+  flex: 1;
+  display: flex;
+  margin-bottom: 0.7rem;
+}
+.consultant-mode-grade{
+  font-size: 0.81rem;
+  width: 5.6rem;
+  height: 1.4rem;
+  margin-right: 0.9rem;
+  margin-left: 0.9rem;
+  flex: 1;
+
+}
+.consultant-mode-grade-unensure{
+  background: #FAFAFA;
+  color: #828282;
+}
+.consultant-mode-grade-ensure{
+  background: #451C81;
+  color: #FFFFFF;
+}
+.consultant-mode-button{
+  display: flex;
+}
+.consultant-mode-button-detail{
+  height: 2.3rem;
+  line-height: 2.3rem;
+  flex: 1;
+  font-size: 1rem;
+  box-shadow:1px 0px 1px 1px #ccc;
+}
+.consultant-mode-button-reset{
+  background: #FFFFFF;
+  color: #451C81;
+}
+.consultant-mode-button-ensure{
+  background: #451C81;
+  color: #FFFFFF;
+}

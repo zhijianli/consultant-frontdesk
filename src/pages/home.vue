@@ -19,23 +19,28 @@
       <img src="../assets/images/banner.jpg" style="width:100%;height:150px;">
       </router-link>
     </div>
-
+    <!--<layer v-model="showLayer" @sure="yesFn" :btn="['确定使用', '放弃']" :content="'欢迎使用vue2-layer-mobile'"></layer>-->
     <!--筛选条件 -->
     <div class="screening-conditions">
-      <div class="screening-conditions-region screening-conditions-font">地区
+      <div class="screening-conditions-region screening-conditions-font" @click="viewConsultantRegion()">地区
         <img src="../assets/images/triangle.png" class="triangle" >
       </div>
-      <div class="screening-conditions-price screening-conditions-font">价格
+      <div class="screening-conditions-price screening-conditions-font" @click="viewConsultantPrice()">价格
         <img src="../assets/images/triangle.png" class="triangle" >
       </div>
-      <div class="screening-conditions-mode screening-conditions-font">咨询方式
+      <div class="screening-conditions-mode screening-conditions-font" @click="viewConsultantMode()">咨询方式
         <img src="../assets/images/triangle.png" class="triangle" >
       </div>
-      <div class="screening-conditions-field screening-conditions-font">领域
+      <div class="screening-conditions-field screening-conditions-font" @click="viewConsultantField()">领域
         <img src="../assets/images/triangle.png" class="triangle" >
       </div>
 
     </div>
+    <!--筛选条件具体展示 -->
+    <consultantRegion v-if="showConsultantRegion"></consultantRegion>
+    <consultantPrice v-if="showConsultantPrice"></consultantPrice>
+    <consultantMode v-if="showConsultantMode"></consultantMode>
+    <consultantField v-if="showConsultantField"></consultantField>
 
     <!--咨询师List -->
     <div class="consultant-list">
@@ -123,16 +128,29 @@
 </template>
 
 <script>
+  import consultantPrice from '../components/consultantPrice.vue'
+  import consultantField from '../components/consultantField.vue'
+  import consultantMode from '../components/consultantMode.vue'
+  import consultantRegion from '../components/consultantRegion.vue'
   import oneLoad from "../components/loading.vue" //引入loading组件,在数据加载时显示,他的显示隐藏由 showLoading的值决定
+
   export default {
     name: 'home',
     components:{
-      oneLoad
+      oneLoad,
+      consultantPrice,
+      consultantField,
+      consultantMode,
+      consultantRegion
     },
     data:function(){
       return {
         msg: 'Welcome to one demo',
         showLoading:true,
+        showConsultantPrice: false,
+        showConsultantField: false,
+        showConsultantMode: false,
+        showConsultantRegion: false,
         homeDesc:{}
       }
     },
@@ -147,6 +165,30 @@
         },error => {
           console.log(error);
         });
+      },
+      viewConsultantPrice:function () {
+          this.showConsultantPrice = !this.showConsultantPrice;
+          this.showConsultantField = false;
+          this.showConsultantMode = false;
+          this.showConsultantRegion = false;
+      },
+      viewConsultantField:function () {
+        this.showConsultantField = !this.showConsultantField;
+        this.showConsultantPrice = false;
+        this.showConsultantMode = false;
+        this.showConsultantRegion = false;
+      },
+      viewConsultantMode:function () {
+        this.showConsultantMode = !this.showConsultantMode;
+        this.showConsultantPrice = false;
+        this.showConsultantField = false;
+        this.showConsultantRegion = false;
+      },
+      viewConsultantRegion:function () {
+        this.showConsultantRegion = !this.showConsultantRegion;
+        this.showConsultantPrice = false;
+        this.showConsultantField = false;
+        this.showConsultantMode = false;
       }
     }
 }

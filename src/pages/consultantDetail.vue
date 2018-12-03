@@ -19,7 +19,7 @@
     <div class="consultant-introduce">
       <!--受训经历 -->
       <div class="consultant-introduce-detail">
-        <div class="line">
+        <div class="title-line">
         <div class="title">受训经历</div>
         </div>
         <div class="content">
@@ -32,7 +32,7 @@
 
       <!--擅长领域和方向 -->
       <div class="consultant-introduce-detail">
-        <div class="line">
+        <div class="title-line">
           <div class="title">擅长领域和方向</div>
         </div>
         <div class="content">
@@ -44,7 +44,7 @@
 
       <!--咨询价格 -->
       <div class="consultant-introduce-detail">
-        <div class="line">
+        <div class="title-line">
           <div class="title">咨询价格</div>
         </div>
         <div class="content">
@@ -56,7 +56,7 @@
 
       <!--联系方式 -->
       <div class="consultant-introduce-detail">
-        <div class="line">
+        <div class="title-line">
           <div class="title">联系方式</div>
         </div>
         <div class="content">
