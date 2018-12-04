@@ -122,6 +122,30 @@
       </div>
       <p class="line"></p>
 
+      <div class="consultant">
+        <!--咨询师头像 -->
+        <div class="head-portrait">
+          <img src="../assets/images/headPortrait.png" class="head-portrait-img" >
+        </div>
+
+        <!--咨询师介绍 -->
+        <div class="introduce">
+          <div class="consultant-name">
+            李志坚
+          </div>
+          <div class="consultant-describe">
+            一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。
+            一个牛逼的心理咨询师。
+          </div>
+          <div class="consultant-price">
+
+            300元/次
+          </div>
+        </div>
+
+
+      </div>
+      <p class="line"></p>
     </div>
 
   </div>

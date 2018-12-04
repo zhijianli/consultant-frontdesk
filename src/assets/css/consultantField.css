@@ -1,26 +1,26 @@
-.consultant-price-component{
-  height: 13rem;
+.consultant-field-component{
+  height: 19rem;
 }
-.consultant-price-title{
+.consultant-field-title{
   color: #4A4A4A;
   font-size: 1rem;
   text-align : left;
   margin-left: 1rem;
   margin-top: 0.7rem;
 }
-.consultant-price-content{
+.consultant-field-content{
   display: flex;
   flex-direction: column;
   margin-top: 0.7rem;
-  margin-bottom: 4.3rem;
+  /*margin-bottom: 4.3rem;*/
 }
-.consultant-price-content-line{
+.consultant-field-content-line{
   flex: 1;
   display: flex;
   margin-bottom: 0.7rem;
 }
 
-.consultant-price-grade{
+.consultant-field-grade{
   font-size: 0.81rem;
   width: 5.6rem;
   height: 1.4rem;
@@ -28,34 +28,33 @@
   margin-right: 0.9rem;
   margin-left: 0.9rem;
   flex: 1;
-
 }
-.consultant-price-grade-unensure{
+.consultant-field-grade-unensure{
   background: #FAFAFA;
   color: #828282;
 }
-.consultant-price-grade-ensure{
+.consultant-field-grade-ensure{
   background: #451C81;
   color: #FFFFFF;
 }
 
 
-.consultant-price-button{
+.consultant-field-button{
   display: flex;
 
 }
-.consultant-price-button-detail{
+.consultant-field-button-detail{
   height: 2.3rem;
   line-height: 2.3rem;
   flex: 1;
   font-size: 1rem;
   box-shadow:1px 0px 1px 1px #ccc;
 }
-.consultant-price-button-reset{
+.consultant-field-button-reset{
   background: #FFFFFF;
   color: #451C81;
 }
-.consultant-price-button-ensure{
+.consultant-field-button-ensure{
   background: #451C81;
   color: #FFFFFF;
 }

@@ -1,0 +1,51 @@
+.consultant-region-component{
+  height: 17.7rem;
+}
+.consultant-region{
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 1rem;
+}
+.consultant-region-province{
+  flex: 1;
+  padding-left: 2rem;
+}
+.consultant-region-city{
+  flex: 2;
+  border-left: 1px solid #9B9B9B;
+  padding-left: 2rem;
+}
+.consultant-region-grade{
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  width: 3rem;
+}
+.consultant-region-grade-unensure{
+  color: #9B9B9B;
+}
+.consultant-region-grade-ensure{
+  color: #451C81;
+  border-bottom: 1px solid #451C81;
+
+}
+
+
+.consultant-region-button{
+  display: flex;
+
+}
+.consultant-region-button-detail{
+  height: 2.3rem;
+  line-height: 2.3rem;
+  flex: 1;
+  font-size: 1rem;
+  box-shadow:1px 0px 1px 1px #ccc;
+}
+.consultant-region-button-reset{
+  background: #FFFFFF;
+  color: #451C81;
+}
+.consultant-region-button-ensure{
+  background: #451C81;
+  color: #FFFFFF;
+}
