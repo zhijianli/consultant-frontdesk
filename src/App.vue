@@ -19,8 +19,10 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  overflow: hidden;
-  /* margin-top: 60px; */
+  /*滚轮滑动*/
+  position: absolute;
+  overflow: auto;
+  height: 100%;
 }
 
 </style>
