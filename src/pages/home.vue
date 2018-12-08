@@ -19,6 +19,14 @@
       <img src="../assets/images/banner.jpg" style="width:100%;height:150px;">
       </router-link>
     </div>
+
+    <!--搜索框 -->
+    <!--<div>-->
+      <input class="search" placeholder="输入咨询师姓名搜索"></input>
+    <img src="../assets/images/search.png" class="search-imge" >
+    <!--</div>-->
+
+
     <!--<layer v-model="showLayer" @sure="yesFn" :btn="['确定使用', '放弃']" :content="'欢迎使用vue2-layer-mobile'"></layer>-->
     <!--筛选条件 -->
     <div class="screening-conditions">
