@@ -51,7 +51,7 @@
     <consultantField v-if="showConsultantField"></consultantField>
 
     <!--咨询师List -->
-    <div class="consultant-list">
+    <div class="consultant-list" v-for="item in consultantList">
 
       <!--咨询师信息 -->
       <div class="consultant">
@@ -63,7 +63,7 @@
         <!--咨询师介绍 -->
         <div class="introduce">
           <div class="consultant-name">
-             李志坚
+             {{item.name}}
           </div>
           <div class="consultant-describe">
             一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。
@@ -71,7 +71,7 @@
           </div>
           <div class="consultant-price">
 
-             300元/次
+            {{item.price}}元/次
           </div>
         </div>
 
@@ -79,81 +79,7 @@
       </div>
       <div class="line"></div>
 
-      <!--咨询师信息 -->
-      <div class="consultant">
-        <!--咨询师头像 -->
-        <div class="head-portrait">
-          <img src="../assets/images/headPortrait.png" class="head-portrait-img" >
-        </div>
 
-        <!--咨询师介绍 -->
-        <div class="introduce">
-          <div class="consultant-name">
-            李志坚
-          </div>
-          <div class="consultant-describe">
-            一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。
-            一个牛逼的心理咨询师。
-          </div>
-          <div class="consultant-price">
-
-            300元/次
-          </div>
-        </div>
-
-      </div>
-      <p class="line"></p>
-
-      <!--咨询师信息 -->
-      <div class="consultant">
-        <!--咨询师头像 -->
-        <div class="head-portrait">
-          <img src="../assets/images/headPortrait.png" class="head-portrait-img" >
-        </div>
-
-        <!--咨询师介绍 -->
-        <div class="introduce">
-          <div class="consultant-name">
-            李志坚
-          </div>
-          <div class="consultant-describe">
-            一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。
-            一个牛逼的心理咨询师。
-          </div>
-          <div class="consultant-price">
-
-            300元/次
-          </div>
-        </div>
-
-
-      </div>
-      <p class="line"></p>
-
-      <div class="consultant">
-        <!--咨询师头像 -->
-        <div class="head-portrait">
-          <img src="../assets/images/headPortrait.png" class="head-portrait-img" >
-        </div>
-
-        <!--咨询师介绍 -->
-        <div class="introduce">
-          <div class="consultant-name">
-            李志坚
-          </div>
-          <div class="consultant-describe">
-            一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。
-            一个牛逼的心理咨询师。
-          </div>
-          <div class="consultant-price">
-
-            300元/次
-          </div>
-        </div>
-
-
-      </div>
-      <p class="line"></p>
     </div>
 
   </div>
@@ -191,16 +117,18 @@
     },
     methods:{
       getDatas:function(){  //从后台获取数据
-        // return this.$axios.post("/api/consultant/getAllMessageByCondition").then((response) => {
-        //   if (response.status === 200) {
-        //     this.$store.state.consultantList = response.data.consultantList;
-        //     this.$store.state.name = response.data.consultantList[0].name;
-        //   } else {
-        //     return {msg: "抱歉，服务器错误"}
-        //   }
-        // }).catch((error) => {
-        //   return Promise.reject({msg: error.message})
-        // })
+
+        return this.$axios.post("/api/consultant/getAllMessageByCondition").then((response) => {
+          if (response.status === 200) {
+            this.$store.state.consultantList = response.data.consultantList;
+            this.$store.state.name = response.data.consultantList[0].name;
+
+          } else {
+            return {msg: "抱歉，服务器错误"}
+          }
+        }).catch((error) => {
+          return Promise.reject({msg: error.message})
+        })
 
         // this.$http.get("/homeData").then(response => {   //使用了vue-resource去请求后台接口
         //   this.homeDesc = response.body.homeDesc;
@@ -233,6 +161,11 @@
         this.showConsultantField = false;
         this.showConsultantMode = false;
       }
+    },
+    computed:{
+      consultantList(){
+        return this.$store.state.consultantList
+      },
     }
 }
   </script>

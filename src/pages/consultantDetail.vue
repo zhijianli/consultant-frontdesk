@@ -91,14 +91,25 @@
       this.getDatas();
     },
     methods:{
-      getDatas:function(){  //从后台获取数据
-        this.$http.get("/homeData").then(response => {   //使用了vue-resource去请求后台接口
-          this.homeDesc = response.body.homeDesc;
-          this.showLoading = false;
-        },error => {
-          console.log(error);
-        });
-      }
+      // getDatas:function(){  //从后台获取数据
+      //   this.$http.get("/homeData").then(response => {   //使用了vue-resource去请求后台接口
+      //     this.homeDesc = response.body.homeDesc;
+      //     this.showLoading = false;
+      //   },error => {
+      //     console.log(error);
+      //   });
+      // }
+      // return this.$axios.post("/api/consultant/getAllMessageByCondition").then((response) => {
+      //   if (response.status === 200) {
+      //     this.$store.state.consultantList = response.data.consultantList;
+      //     this.$store.state.name = response.data.consultantList[0].name;
+      //
+      //   } else {
+      //     return {msg: "抱歉，服务器错误"}
+      //   }
+      // }).catch((error) => {
+      //   return Promise.reject({msg: error.message})
+      // })
     }
   }
 </script>
