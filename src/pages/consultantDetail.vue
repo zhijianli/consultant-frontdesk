@@ -11,7 +11,7 @@
     </div>
     <div class="head">
       <img src="../assets/images/headPortrait.png" class="head-img" >
-      <div class="con-name">李志坚</div>
+      <div class="con-name">{{this.consultantName}}</div>
       <div class="con-level">国家三级心理咨询师</div>
     </div>
 
@@ -84,11 +84,30 @@
       return {
         msg: 'Welcome to one demo',
         showLoading:true,
-        homeDesc:{}
+        homeDesc:{},
+        id:null,
+        consultantName:'',
       }
     },
     created:function(){
       this.getDatas();
+    },
+    beforeMount() {
+      this.id = this.$route.query.id;
+      if(this.id>0){
+        var params = new URLSearchParams();
+        params.append('id', this.$route.query.id);
+        return this.$axios.post("/api/consultant/getConsultantById",params).then((response) => {
+          if (response.status === 200) {
+            this.consultantName = response.data.consultant.name;
+          } else {
+            return {msg: "抱歉，服务器错误"}
+          }
+        }).catch((error) => {
+          return Promise.reject({msg: error.message})
+        })
+      }
+
     },
     methods:{
       // getDatas:function(){  //从后台获取数据

@@ -22,7 +22,7 @@
 
     <!--搜索框 -->
     <!--<div>-->
-      <input class="search" placeholder="输入咨询师姓名搜索"></input>
+      <input class="search" v-model="searchName" @mouseleave="getDatas()" placeholder="输入咨询师姓名搜索"></input>
     <img src="../assets/images/search.png" class="search-imge" >
     <!--</div>-->
 
@@ -54,7 +54,7 @@
     <div class="consultant-list" v-for="item in consultantList">
 
       <!--咨询师信息 -->
-      <div class="consultant">
+      <div class="consultant" @click="consultantDetail(item.id)">
         <!--咨询师头像 -->
         <div class="head-portrait">
           <img src="../assets/images/headPortrait.png" class="head-portrait-img" >
@@ -109,7 +109,8 @@
         showConsultantField: false,
         showConsultantMode: false,
         showConsultantRegion: false,
-        homeDesc:{}
+        homeDesc:{},
+        searchName:""
       }
     },
     created:function(){
@@ -117,8 +118,9 @@
     },
     methods:{
       getDatas:function(){  //从后台获取数据
-
-        return this.$axios.post("/api/consultant/getAllMessageByCondition").then((response) => {
+        var params = new URLSearchParams();
+        params.append('name', this.searchName);
+        return this.$axios.post("/api/consultant/getAllMessageByCondition",params).then((response) => {
           if (response.status === 200) {
             this.$store.state.consultantList = response.data.consultantList;
             this.$store.state.name = response.data.consultantList[0].name;
@@ -160,8 +162,17 @@
         this.showConsultantPrice = false;
         this.showConsultantField = false;
         this.showConsultantMode = false;
+      },
+      consultantDetail(id){
+        this.$router.push({
+          path:'consultantDetail',
+          query:{
+             id:id
+          }
+        })
       }
     },
+
     computed:{
       consultantList(){
         return this.$store.state.consultantList
