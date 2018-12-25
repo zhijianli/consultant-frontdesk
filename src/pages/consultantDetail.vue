@@ -23,10 +23,7 @@
         <div class="title">受训经历</div>
         </div>
         <div class="content">
-             非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
-             非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
-             非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
-
+             {{this.experienceOfTraining}}
         </div>
       </div>
 
@@ -48,9 +45,7 @@
           <div class="title">咨询价格</div>
         </div>
         <div class="content">
-          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
-          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
-          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+          {{this.price}}元/小时
         </div>
       </div>
 
@@ -60,9 +55,7 @@
           <div class="title">联系方式</div>
         </div>
         <div class="content">
-          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
-          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
-          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+          {{this.telephone}}
         </div>
       </div>
 
@@ -87,6 +80,10 @@
         homeDesc:{},
         id:null,
         consultantName:'',
+        telephone:'',
+        experienceOfTraining:'',
+        price:''
+
       }
     },
     created:function(){
@@ -97,9 +94,12 @@
       if(this.id>0){
         var params = new URLSearchParams();
         params.append('id', this.$route.query.id);
-        return this.$axios.post("/api/consultant/getConsultantById",params).then((response) => {
+        return this.$axios.post("/api/consultantCenter/consultant/getConsultantById",params).then((response) => {
           if (response.status === 200) {
             this.consultantName = response.data.consultant.name;
+            this.telephone = response.data.consultant.telephone;
+            this.experienceOfTraining = response.data.consultant.experienceOfTraining;
+            this.price = response.data.consultant.price;
           } else {
             return {msg: "抱歉，服务器错误"}
           }
