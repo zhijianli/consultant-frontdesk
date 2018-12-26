@@ -10,9 +10,11 @@
       </router-link>
     </div>
     <div class="head">
-      <img src="../assets/images/headPortrait.png" class="head-img" >
+      <img  v-bind:src="headPortraitUrl" class="head-img" >
       <div class="con-name">{{this.consultantName}}</div>
       <div class="con-level">国家三级心理咨询师</div>
+      <!--{{https://image-consultant.oss-cn-hangzhou.aliyuncs.com/this.headPortraitUrl}}-->
+      <!--../assets/images/headPortrait.png-->
     </div>
 
     <!--咨询师介绍 -->
@@ -28,15 +30,20 @@
       </div>
 
       <!--擅长领域和方向 -->
-      <div class="consultant-introduce-detail">
+      <div class="consultant-field-detail">
         <div class="title-line">
           <div class="title">擅长领域和方向</div>
         </div>
-        <div class="content">
-          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
-          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
-          非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。非常牛逼。
+        <div style="display: flex" v-for="item in consultingFieldList" class="content">
+
+          <div>{{item.name}}：</div>
+
+          <div v-for="item2 in item.consultingFieldDetailList" class="consulting-field-detail">
+               {{item2.name}}
+          </div>
+
         </div>
+
       </div>
 
       <!--咨询价格 -->
@@ -57,6 +64,7 @@
         <div class="content">
           {{this.telephone}}
         </div>
+
       </div>
 
 
@@ -82,12 +90,15 @@
         consultantName:'',
         telephone:'',
         experienceOfTraining:'',
-        price:''
+        price:'',
+        headPortraitUrl:'',
+        aliOssUrl:'https://image-consultant.oss-cn-hangzhou.aliyuncs.com/',
+        consultingFieldList:'',
 
       }
     },
     created:function(){
-      this.getDatas();
+      this.getConsultantFieldAndDetail();
     },
     beforeMount() {
       this.id = this.$route.query.id;
@@ -100,6 +111,7 @@
             this.telephone = response.data.consultant.telephone;
             this.experienceOfTraining = response.data.consultant.experienceOfTraining;
             this.price = response.data.consultant.price;
+            this.headPortraitUrl = this.aliOssUrl+response.data.consultant.headPortraitUrl;
           } else {
             return {msg: "抱歉，服务器错误"}
           }
@@ -110,25 +122,24 @@
 
     },
     methods:{
-      // getDatas:function(){  //从后台获取数据
-      //   this.$http.get("/homeData").then(response => {   //使用了vue-resource去请求后台接口
-      //     this.homeDesc = response.body.homeDesc;
-      //     this.showLoading = false;
-      //   },error => {
-      //     console.log(error);
-      //   });
-      // }
-      // return this.$axios.post("/api/consultant/getAllMessageByCondition").then((response) => {
-      //   if (response.status === 200) {
-      //     this.$store.state.consultantList = response.data.consultantList;
-      //     this.$store.state.name = response.data.consultantList[0].name;
-      //
-      //   } else {
-      //     return {msg: "抱歉，服务器错误"}
-      //   }
-      // }).catch((error) => {
-      //   return Promise.reject({msg: error.message})
-      // })
+      // 加载咨询领域数据
+      getConsultantFieldAndDetail:function(){
+        var that = this;
+        var params = new URLSearchParams();
+        if(this.id){
+          params.append('consultantId', this.id);
+        }
+        this.$axios.post("/api/consultantCenter/consultingField/getConsultantFieldAndDetail",params).then((response) => {
+          if (response.status === 200) {
+
+            console.log("-========-");
+            this.consultingFieldList = response.data.consultingFieldList
+
+          } else{
+            console.log(response.status)
+          }
+        }).catch(function(error){console.log(typeof+ error)})
+      }
     }
   }
 </script>

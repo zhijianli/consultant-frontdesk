@@ -33,6 +33,9 @@
   background: #FAFAFA;
   color: #828282;
 }
+.consultant-mode-grade-hidden{
+  background: #FFFFFF;
+}
 .consultant-mode-grade-ensure{
   background: #451C81;
   color: #FFFFFF;

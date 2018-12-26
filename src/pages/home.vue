@@ -120,7 +120,7 @@
       getDatas:function(){  //从后台获取数据
         var params = new URLSearchParams();
         params.append('name', this.searchName);
-        return this.$axios.post("/api/consultant/getAllMessageByCondition",params).then((response) => {
+        return this.$axios.post("/api/consultantCenter/consultant/getAllMessageByCondition",params).then((response) => {
           if (response.status === 200) {
             this.$store.state.consultantList = response.data.consultantList;
             this.$store.state.name = response.data.consultantList[0].name;

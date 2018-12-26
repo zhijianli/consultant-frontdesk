@@ -5,9 +5,14 @@
     <div class="consultant-mode-title">咨询方式</div>
     <div class="consultant-mode-content">
       <div class="consultant-mode-content-line">
+        <div class="consultant-mode-grade consultant-mode-grade-unensure">视频/当面</div>
+        <div class="consultant-mode-grade consultant-mode-grade-ensure">面对面</div>
         <div class="consultant-mode-grade consultant-mode-grade-unensure">视频</div>
-        <div class="consultant-mode-grade consultant-mode-grade-ensure">当面</div>
+      </div>
+      <div class="consultant-mode-content-line">
         <div class="consultant-mode-grade consultant-mode-grade-unensure">语音</div>
+        <div class="consultant-mode-grade consultant-mode-grade-hidden"></div>
+        <div class="consultant-mode-grade consultant-mode-grade-hidden"></div>
       </div>
     </div>
 
