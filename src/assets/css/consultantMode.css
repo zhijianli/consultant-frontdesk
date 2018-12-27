@@ -27,12 +27,10 @@
   margin-right: 0.9rem;
   margin-left: 0.9rem;
   flex: 1;
-
-}
-.consultant-mode-grade-unensure{
   background: #FAFAFA;
   color: #828282;
 }
+
 .consultant-mode-grade-hidden{
   background: #FFFFFF;
 }

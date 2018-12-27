@@ -47,7 +47,7 @@
     <!--筛选条件具体展示 -->
     <consultantRegion v-if="showConsultantRegion"></consultantRegion>
     <consultantPrice v-if="showConsultantPrice"></consultantPrice>
-    <consultantMode v-if="showConsultantMode"></consultantMode>
+    <consultantMode v-if="showConsultantMode" v-on:getModeCondition="getModeCondition"></consultantMode>
     <consultantField v-if="showConsultantField"></consultantField>
 
     <!--咨询师List -->
@@ -57,20 +57,18 @@
       <div class="consultant" @click="consultantDetail(item.id)">
         <!--咨询师头像 -->
         <div class="head-portrait">
-          <img src="../assets/images/headPortrait.png" class="head-portrait-img" >
+          <img :src="'https://image-consultant.oss-cn-hangzhou.aliyuncs.com/'+item.headPortraitUrl" class="head-portrait-img" />
         </div>
-
+        <!--../assets/images/headPortrait.png-->
         <!--咨询师介绍 -->
         <div class="introduce">
           <div class="consultant-name">
              {{item.name}}
           </div>
           <div class="consultant-describe">
-            一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。一个牛逼的心理咨询师。
-            一个牛逼的心理咨询师。
+            {{item.experienceOfTraining}}
           </div>
           <div class="consultant-price">
-
             {{item.price}}元/次
           </div>
         </div>
@@ -110,7 +108,8 @@
         showConsultantMode: false,
         showConsultantRegion: false,
         homeDesc:{},
-        searchName:""
+        searchName:"",
+        consultationMethodList:[],
       }
     },
     created:function(){
@@ -120,7 +119,9 @@
       getDatas:function(){  //从后台获取数据
         var params = new URLSearchParams();
         params.append('name', this.searchName);
-        return this.$axios.post("/api/consultantCenter/consultant/getAllMessageByCondition",params).then((response) => {
+        params.append('consultationMethodList', this.consultationMethodList);
+        // return this.$axios.post("/api/consultantCenter/consultant/getAllMessageByCondition",params).then((response) => {
+        return this.$axios.post("/api/consultant/getAllMessageByCondition",params).then((response) => {
           if (response.status === 200) {
             this.$store.state.consultantList = response.data.consultantList;
             this.$store.state.name = response.data.consultantList[0].name;
@@ -170,6 +171,12 @@
              id:id
           }
         })
+      },
+      getModeCondition:function (data) {
+         this.consultationMethodList = [];
+         this.consultationMethodList.push(data);
+         console.log("=============="+this.consultationMethodList);
+         this.getDatas();
       }
     },
 
