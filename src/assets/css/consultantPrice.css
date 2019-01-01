@@ -28,11 +28,9 @@
   margin-right: 0.9rem;
   margin-left: 0.9rem;
   flex: 1;
-
-}
-.consultant-price-grade-unensure{
   background: #FAFAFA;
   color: #828282;
+
 }
 .consultant-price-grade-ensure{
   background: #451C81;

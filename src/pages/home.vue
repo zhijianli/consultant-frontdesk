@@ -46,7 +46,7 @@
     </div>
     <!--筛选条件具体展示 -->
     <consultantRegion v-if="showConsultantRegion"></consultantRegion>
-    <consultantPrice v-if="showConsultantPrice"></consultantPrice>
+    <consultantPrice v-if="showConsultantPrice" v-on:getPriceCondition="getPriceCondition"></consultantPrice>
     <consultantMode v-if="showConsultantMode" v-on:getModeCondition="getModeCondition"></consultantMode>
     <consultantField v-if="showConsultantField"></consultantField>
 
@@ -110,6 +110,9 @@
         homeDesc:{},
         searchName:"",
         consultationMethodList:[],
+        priceMin:0,
+        priceMax:0,
+
       }
     },
     created:function(){
@@ -120,8 +123,13 @@
         var params = new URLSearchParams();
         params.append('name', this.searchName);
         params.append('consultationMethodList', this.consultationMethodList);
-        // return this.$axios.post("/api/consultantCenter/consultant/getAllMessageByCondition",params).then((response) => {
-        return this.$axios.post("/api/consultant/getAllMessageByCondition",params).then((response) => {
+        params.append('priceMin', this.priceMin);
+        params.append('priceMax', this.priceMax);
+
+        console.log("~~~~~~~~~~"+this.consultationMethodList+"~~~~~~~~"+this.priceMin+"~~~~~~~~~~~"+this.priceMax);
+
+        return this.$axios.post("/api/consultantCenter/consultant/getAllMessageByCondition",params).then((response) => {
+        // return this.$axios.post("/api/consultant/getAllMessageByCondition",params).then((response) => {
           if (response.status === 200) {
             this.$store.state.consultantList = response.data.consultantList;
             this.$store.state.name = response.data.consultantList[0].name;
@@ -175,7 +183,17 @@
       getModeCondition:function (data) {
          this.consultationMethodList = [];
          this.consultationMethodList.push(data);
-         console.log("=============="+this.consultationMethodList);
+
+         this.priceMin = 0;
+         this.priceMax = 0;
+          // console.log("=============="+this.consultationMethodList);
+         this.getDatas();
+      },
+      getPriceCondition:function(priceMin,priceMax){
+         this.priceMin = priceMin;
+         this.priceMax = priceMax;
+
+         this.consultationMethodList = [];
          this.getDatas();
       }
     },

@@ -12,8 +12,8 @@ module.exports = {
     assetsPublicPath: '/',
     proxyTable: {
       "/api": {
-        target: "http://localhost:8088",
-        // target: "http://moluantongxue.com:9000",
+        // target: "http://localhost:8088",
+        target: "http://moluantongxue.com:9000",
         changeOrigin:true, //是否跨域
         // secure: false // 如果是https接口，需要配置这个参数
         pathRewrite: {
