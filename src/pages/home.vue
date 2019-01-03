@@ -45,7 +45,7 @@
 
     </div>
     <!--筛选条件具体展示 -->
-    <consultantRegion v-if="showConsultantRegion"></consultantRegion>
+    <consultantRegion v-if="showConsultantRegion" v-on:getRegionCondition="getRegionCondition"></consultantRegion>
     <consultantPrice v-if="showConsultantPrice" v-on:getPriceCondition="getPriceCondition"></consultantPrice>
     <consultantMode v-if="showConsultantMode" v-on:getModeCondition="getModeCondition"></consultantMode>
     <consultantField v-if="showConsultantField"></consultantField>
@@ -112,7 +112,8 @@
         consultationMethodList:[],
         priceMin:0,
         priceMax:0,
-
+        chooseProvinceName: '',
+        chooseCityName: '',
       }
     },
     created:function(){
@@ -125,8 +126,12 @@
         params.append('consultationMethodList', this.consultationMethodList);
         params.append('priceMin', this.priceMin);
         params.append('priceMax', this.priceMax);
+        params.append('province', this.chooseProvinceName);
+        params.append('city', this.chooseCityName);
 
-        console.log("~~~~~~~~~~"+this.consultationMethodList+"~~~~~~~~"+this.priceMin+"~~~~~~~~~~~"+this.priceMax);
+        console.log("~~~~~~~~~~"+this.consultationMethodList+
+                    "~~~~~~~~"+this.priceMin+"~~~~~~~~~~~"+this.priceMax+
+                    "~~~~~~~~"+this.chooseProvinceName+"~~~~~~~~~~~"+this.chooseCityName);
 
         return this.$axios.post("/api/consultantCenter/consultant/getAllMessageByCondition",params).then((response) => {
         // return this.$axios.post("/api/consultant/getAllMessageByCondition",params).then((response) => {
@@ -180,22 +185,31 @@
           }
         })
       },
+      resetCondition:function(){
+        this.consultationMethodList = [];
+        this.priceMin = 0;
+        this.priceMax = 0;
+        this.chooseProvinceName = '';
+        this.chooseCityName = '';
+      },
       getModeCondition:function (data) {
-         this.consultationMethodList = [];
+         this.resetCondition();
          this.consultationMethodList.push(data);
-
-         this.priceMin = 0;
-         this.priceMax = 0;
-          // console.log("=============="+this.consultationMethodList);
          this.getDatas();
       },
       getPriceCondition:function(priceMin,priceMax){
+         this.resetCondition();
          this.priceMin = priceMin;
          this.priceMax = priceMax;
-
-         this.consultationMethodList = [];
          this.getDatas();
-      }
+      },
+      getRegionCondition:function(chooseProvinceName,chooseCityName){
+         this.resetCondition();
+         this.chooseProvinceName = chooseProvinceName;
+         this.chooseCityName = chooseCityName;
+         this.getDatas();
+      },
+
     },
 
     computed:{

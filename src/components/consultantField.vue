@@ -1,40 +1,21 @@
-<style src="../assets/css/consultantfield.css"></style>
+<style src="../assets/css/consultantField.css"></style>
 
 <template>
   <div class="consultant-field-component">
-    <div v-for="item in consultingFieldList">
-      <div class="consultant-field-title">{{item.name}}</div>
+    <div v-for="item in consultantFieldArray">
+      <div class="consultant-field-title">{{item.value}}</div>
       <div class="consultant-field-content">
         <div class="consultant-field-content-line">
-          <div class="consultant-field-grade consultant-field-grade-unensure" v-for="item2 in item.consultingFieldDetailList">{{item2.name}}</div>
-
+          <div  @click="chooseConsultantFieldDetail(item2.id)"
+                class="consultant-field-grade"
+               :class="item2.display ? 'consultant-field-grade-ensure' : 'consultant-field-grade-unensure' "
+               v-for="item2 in item.children">{{item2.value}}</div>
         </div>
-        <!--<div class="consultant-field-content-line">-->
-          <!--<div class="consultant-field-grade consultant-field-grade-unensure">情绪管理</div>-->
-          <!--<div class="consultant-field-grade consultant-field-grade-unensure">危机干预</div>-->
-          <!--<div  class="consultant-field-grade consultant-field-grade-unensure">迷茫</div>-->
-        <!--</div>-->
       </div>
     </div>
-    <!--<div class="consultant-field-title">性与性别</div>-->
-    <!--<div class="consultant-field-content">-->
-      <!--<div class="consultant-field-content-line">-->
-        <!--<div class="consultant-field-grade consultant-field-grade-unensure">性心理</div>-->
-        <!--<div class="consultant-field-grade consultant-field-grade-unensure">性别认同</div>-->
-        <!--<div class="consultant-field-grade consultant-field-grade-unensure">GLTB</div>-->
-      <!--</div>-->
-    <!--</div>-->
-    <!--<div class="consultant-field-title">亲密关系</div>-->
-    <!--<div class="consultant-field-content">-->
-      <!--<div class="consultant-field-content-line">-->
-        <!--<div class="consultant-field-grade consultant-field-grade-unensure">原生家庭</div>-->
-        <!--<div class="consultant-field-grade consultant-field-grade-ensure">家庭暴力</div>-->
-        <!--<div class="consultant-field-grade consultant-field-grade-unensure">亲子关系</div>-->
-      <!--</div>-->
-    <!--</div>-->
 
     <div class="consultant-field-button">
-      <div class="consultant-field-button-detail consultant-field-button-reset">全部重置</div>
+      <div class="consultant-field-button-detail consultant-field-button-reset" @click="reset()">全部重置</div>
       <div class="consultant-field-button-detail consultant-field-button-ensure">确定</div>
     </div>
 
@@ -48,6 +29,8 @@
       return {
         data:"this is consultantfield",
         consultingFieldList:null,
+        consultantFieldArray:[],
+        consultantFieldDetailArray:[],
       }
     },
     created:function(){
@@ -59,14 +42,43 @@
         var params = new URLSearchParams();
         this.$axios.post("/api/consultantCenter/consultingField/getConsultantFieldAndDetail",params).then((response) => {
           if (response.status === 200) {
-            this.consultingFieldList = response.data.consultingFieldList
+            this.consultingFieldList = response.data.consultingFieldList;
+            var consultingFieldDetailList = null;
+            for (var index in this.consultingFieldList) {
+              this.consultantFieldArray.push({id: this.consultingFieldList[index].id, value: this.consultingFieldList[index].name,children: []})
+              consultingFieldDetailList = this.consultingFieldList[index].consultingFieldDetailList;
+              for(var index1 in consultingFieldDetailList){
+                 this.consultantFieldDetailArray.push({id: consultingFieldDetailList[index1].id, value: consultingFieldDetailList[index1].name,consultingFieldId: consultingFieldDetailList[index1].consultingFieldId, display:false})
+              }
+              // console.log("======="+this.consultantFieldDetailArray[0].value);
+            }
+
+            // 分类领域
+            for (var index in this.consultantFieldArray) {
+              for (var index1 in this.consultantFieldDetailArray) {
+                if (this.consultantFieldArray[index].id === this.consultantFieldDetailArray[index1].consultingFieldId) {
+                  this.consultantFieldArray[index].children.push(this.consultantFieldDetailArray[index1]);
+                  console.log(this.consultantFieldArray[index].id+"======="+this.consultantFieldDetailArray[index1].consultingFieldId);
+                }
+              }
+            }
           } else{
             console.log(response.status)
           }
         }).catch(function(error){console.log(typeof+ error)})
+      },
+      chooseConsultantFieldDetail:function(id){
+          for (var index in this.consultantFieldDetailArray) {
+            if (id === this.consultantFieldDetailArray[index].id) {
+              this.consultantFieldDetailArray[index].display = !this.consultantFieldDetailArray[index].display;
+            }
+          }
+      },
+      reset:function () {
+        for (var index in this.consultantFieldDetailArray) {
+            this.consultantFieldDetailArray[index].display = false;
+        }
       }
-
-
     }
   }
 </script>

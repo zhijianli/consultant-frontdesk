@@ -9,16 +9,23 @@
 .consultant-region-province{
   flex: 1;
   padding-left: 2rem;
+  overflow-x:hidden;
+  height: 13rem;
+  /*position: relative;*/
+  /*display: flex;*/
+}
+.consultant-region-grade{
+  /*flex: 1;*/
+  font-size: 0.875rem;
+  margin-top: 1rem;
+  width: 3rem;
 }
 .consultant-region-city{
   flex: 2;
   border-left: 1px solid #9B9B9B;
   padding-left: 2rem;
-}
-.consultant-region-grade{
-  font-size: 0.875rem;
-  margin-top: 1rem;
-  width: 3rem;
+  overflow-x:hidden;
+  height: 13rem;
 }
 .consultant-region-grade-unensure{
   color: #9B9B9B;
