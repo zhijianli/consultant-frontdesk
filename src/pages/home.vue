@@ -48,7 +48,7 @@
     <consultantRegion v-if="showConsultantRegion" v-on:getRegionCondition="getRegionCondition"></consultantRegion>
     <consultantPrice v-if="showConsultantPrice" v-on:getPriceCondition="getPriceCondition"></consultantPrice>
     <consultantMode v-if="showConsultantMode" v-on:getModeCondition="getModeCondition"></consultantMode>
-    <consultantField v-if="showConsultantField"></consultantField>
+    <consultantField v-if="showConsultantField" v-on:getFieldCondition="getFieldCondition"></consultantField>
 
     <!--咨询师List -->
     <div class="consultant-list" v-for="item in consultantList">
@@ -110,6 +110,7 @@
         homeDesc:{},
         searchName:"",
         consultationMethodList:[],
+        chooseFieldDetailList:[],
         priceMin:0,
         priceMax:0,
         chooseProvinceName: '',
@@ -128,13 +129,15 @@
         params.append('priceMax', this.priceMax);
         params.append('province', this.chooseProvinceName);
         params.append('city', this.chooseCityName);
+        params.append('checkFieldDetailIdList', this.chooseFieldDetailList);
 
         console.log("~~~~~~~~~~"+this.consultationMethodList+
                     "~~~~~~~~"+this.priceMin+"~~~~~~~~~~~"+this.priceMax+
-                    "~~~~~~~~"+this.chooseProvinceName+"~~~~~~~~~~~"+this.chooseCityName);
+                    "~~~~~~~~"+this.chooseProvinceName+"~~~~~~~~~~~"+this.chooseCityName+
+                    "~~~~~~~~"+this.chooseFieldDetailList);
 
-        return this.$axios.post("/api/consultantCenter/consultant/getAllMessageByCondition",params).then((response) => {
-        // return this.$axios.post("/api/consultant/getAllMessageByCondition",params).then((response) => {
+        // return this.$axios.post("/api/consultantCenter/consultant/getAllMessageByCondition",params).then((response) => {
+        return this.$axios.post("/api/consultant/getAllMessageByCondition",params).then((response) => {
           if (response.status === 200) {
             this.$store.state.consultantList = response.data.consultantList;
             this.$store.state.name = response.data.consultantList[0].name;
@@ -187,6 +190,7 @@
       },
       resetCondition:function(){
         this.consultationMethodList = [];
+        this.chooseFieldDetailList = [];
         this.priceMin = 0;
         this.priceMax = 0;
         this.chooseProvinceName = '';
@@ -209,6 +213,11 @@
          this.chooseCityName = chooseCityName;
          this.getDatas();
       },
+      getFieldCondition:function (chooseFieldDetailList) {
+        this.resetCondition();
+        this.chooseFieldDetailList = chooseFieldDetailList;
+        this.getDatas();
+      }
 
     },
 
